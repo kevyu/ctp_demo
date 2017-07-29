@@ -1,6 +1,6 @@
 {
   "name": "ctp-demo",
-  "productName": "ElectronReact",
+  "productName": "ctpDemo",
   "version": "0.1.0",
   "description": "CTP DEMO",
   "scripts": {
@@ -59,6 +59,11 @@
       "target": [
         "nsis"
       ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false
     },
     "linux": {
       "target": [
