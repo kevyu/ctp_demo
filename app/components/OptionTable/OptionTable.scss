@@ -1,0 +1,63 @@
+.table {
+  outline: none;
+  font-weight: 200;
+  user-select: none;
+  cursor: pointer;
+}
+
+.header {
+  border-bottom: 1px solid #ff3c3c;
+}
+
+.headerColumn {
+  font-weight: 200;
+  font-size: 14px;
+  color: #00DCDC;
+  text-align: right;
+  margin-right: 5px;
+}
+
+.headerCenter {
+  text-align: center;
+}
+
+.row {
+  outline: none;
+
+  &:hover {
+    background: #131f12;
+  }
+}
+
+.rowSelected {
+  outline: 1px solid #DCDC06;
+  z-index: 1;
+}
+
+.column {
+  font-size: 14px;
+  color: #DCDC06;
+  margin-right: 0;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 5px;
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+}
+
+.alignLeft {
+  justify-content: flex-start;
+}
+
+.alignCenter {
+  justify-content: center;
+}
+
+.blue{
+  color: #00DCDC;
+  background:#25100d;
+}

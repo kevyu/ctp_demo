@@ -86,6 +86,22 @@ export default merge.smart(baseConfig, {
       },
       {
         test: /^((?!\.global).)*\.css$/,
+        include: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          }
+        ]
+      },
+      {
+        test: /^((?!\.global).)*\.css$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'style-loader'

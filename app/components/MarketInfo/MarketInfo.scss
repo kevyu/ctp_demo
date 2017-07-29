@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 0;
+  border-bottom: 2px solid #BE140A;
+}
+
+.item {
+  margin: 0 5px;
+  font-size: 15px;
+}
+
+.title {
+  color: #00DCDC;
+  display: block;
+  margin-bottom: 5px;
+  text-align: right;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.divider {
+  width: 10px;
+}
+
+.value {
+  display: block;
+  color: #fff;
+  text-align: right;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+.yellow {
+  color: #DCDC06;
+}
+
+.green {
+  color: #00DC00
+}
+
+.red {
+  color: #ff3c3c;
+}

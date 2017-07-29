@@ -4,9 +4,11 @@ body {
   position: relative;
   color: white;
   height: 100vh;
-  background-color: #111;
-  font-family: Arial, Helvetica, Helvetica Neue, serif;
+  background-color: #000;
+  font-family: "microsoft yahei", "WenQuanYi Zen Hei", Ubuntu, Arial, sans-serif;
   overflow-y: hidden;
+  padding: 0;
+  margin: 0;
 }
 
 h2 {
@@ -35,4 +37,9 @@ a:hover {
   opacity: 1;
   text-decoration: none;
   cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
 }

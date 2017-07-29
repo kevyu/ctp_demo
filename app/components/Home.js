@@ -1,17 +1,37 @@
 // @flow
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { List } from 'react-virtualized';
+import { connect } from 'react-redux';
+import { getMarketInfo, getMyOptions } from '../actions/options';
+import MarketInfo from './MarketInfo';
+import OptionTable from './OptionTable';
+
 import styles from './Home.css';
 
-export default class Home extends Component {
+class Home extends Component {
+
+  componentDidMount() {
+    this.props.dispatch(getMarketInfo());
+    this.props.dispatch(getMyOptions());
+  }
+
   render() {
+    const { marketInfo, options } = this.props;
     return (
-      <div>
-        <div className={styles.container} data-tid="container">
-          <List width={600} />
+      <div className={styles.container} data-tid="container">
+        <MarketInfo marketInfo={marketInfo} />
+        <div className={styles.main}>
+          <OptionTable options={options} />
         </div>
       </div>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    marketInfo: state.marketInfo,
+    options: state.options
+  };
+}
+
+export default connect(mapStateToProps)(Home);
