@@ -45,6 +45,10 @@ const installExtensions = async () => {
  * Add event listeners...
  */
 
+app.on('browser-window-created', (e, window) => {
+  window.setMenu(null);
+});
+
 app.on('window-all-closed', () => {
   // Respect the OSX convention of having the application in memory even
   // after all windows have been closed
@@ -56,7 +60,7 @@ app.on('window-all-closed', () => {
 
 app.on('ready', async () => {
   if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
-    // await installExtensions();
+    await installExtensions();
   }
 
   mainWindow = new BrowserWindow({
@@ -73,6 +77,7 @@ app.on('ready', async () => {
     if (!mainWindow) {
       throw new Error('"mainWindow" is not defined');
     }
+    mainWindow.maximize();
     mainWindow.show();
     mainWindow.focus();
   });
@@ -81,6 +86,6 @@ app.on('ready', async () => {
     mainWindow = null;
   });
 
-  const menuBuilder = new MenuBuilder(mainWindow);
-  menuBuilder.buildMenu();
+  // const menuBuilder = new MenuBuilder(mainWindow);
+  // menuBuilder.buildMenu();
 });
