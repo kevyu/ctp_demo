@@ -39,6 +39,20 @@ export default merge.smart(baseConfig, {
       // Pipe other styles through css modules and append to style.css
       {
         test: /^((?!\.global).)*\.css$/,
+        include: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          use: {
+            loader: 'css-loader',
+            options: {
+              modules: false,
+              importLoaders: 1
+            }
+          }
+        }),
+      },
+      {
+        test: /^((?!\.global).)*\.css$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           use: {
             loader: 'css-loader',
