@@ -11,7 +11,6 @@
  * @flow
  */
 import { app, BrowserWindow } from 'electron';
-import MenuBuilder from './menu';
 
 let mainWindow = null;
 
@@ -45,6 +44,15 @@ const installExtensions = async () => {
  * Add event listeners...
  */
 
+app.setUserTasks([{
+  program: process.execPath,
+  arguments: '--new-window',
+  iconPath: process.execPath,
+  iconIndex: 0,
+  title: 'New Window',
+  description: 'Create a new window'
+}]);
+
 app.on('browser-window-created', (e, window) => {
   window.setMenu(null);
 });
@@ -66,7 +74,10 @@ app.on('ready', async () => {
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
-    height: 728
+    height: 728,
+    minWidth: 800,
+    minHeight: 600,
+    backgroundColor: '#000'
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);

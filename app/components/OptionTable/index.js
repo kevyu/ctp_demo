@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { Column, Table, AutoSizer } from 'react-virtualized';
 import cx from 'classnames';
 import 'react-virtualized/styles.css';
+
+import OptionColumn from '../OptionColumn/index';
 import styles from './OptionTable.scss';
+
+function columnRenderer({ columnData, cellData }) {
+  return <OptionColumn data={cellData} />;
+}
 
 class OptionTable extends Component {
 
@@ -31,6 +37,7 @@ class OptionTable extends Component {
         label={label}
         dataKey={key}
         cellDataGetter={({ dataKey, rowData, columnData }) => (rowData[dataKey] || (columnData || {})[dataKey] || '---')}
+        cellRenderer={columnRenderer}
         {...others}
       />
     );

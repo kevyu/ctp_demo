@@ -1,18 +1,25 @@
 export const OPTIONS = 'OPTIONS';
 export const MARKET_INFO = 'MARKE_INFO';
 
-function getMockOptions(count) {
+function getMockOptions(count, random = false) {
   const startPrice = 2200;
   const options = [];
+  const mod = Math.round(Math.random() * 10) + 1;
   for (let i = 0; i < count; i += 1) {
+    let percent = 1;
+    if (random) {
+      if (((i + 1) % mod) === 0) {
+        percent = Math.random() + 1;
+      }
+    }
     options.push({
       strike: startPrice + (i * 50),
       zhenshigangganlv: '0.00',
       yinhanbodonglv: '0.00%',
-      yijialv: -16.0,
+      yijialv: (-16.0 * percent).toFixed(1),
       gangganbilv: 0,
-      neizaijiazhi: 436.4,
-      shijianjiazhi: -436.4,
+      neizaijiazhi: (436.4 * percent).toFixed(1),
+      shijianjiazhi: (-436.4 * percent).toFixed(1),
       chicangliang: 1000,
       chengjialiang: 10,
       sellPrice: null,
@@ -53,5 +60,14 @@ export function getMarketInfo() {
   return {
     type: MARKET_INFO,
     payload: getMockMarketInfo()
+  };
+}
+
+export function fetchMyOptions() {
+  return {
+    type: OPTIONS,
+    payload: {
+      items: getMockOptions(50000, true)
+    }
   };
 }
