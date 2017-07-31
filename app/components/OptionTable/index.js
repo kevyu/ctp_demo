@@ -44,7 +44,7 @@ class OptionTable extends Component {
   }
 
   renderTable(height, width) {
-    const { options } = this.props;
+    const { options, onRowDoubleClick } = this.props;
     const columns = [
       {
         label: '真实杠杆率',
@@ -102,6 +102,7 @@ class OptionTable extends Component {
           return styles.row;
         }}
         onRowClick={this.onRowClick}
+        onRowDoubleClick={onRowDoubleClick}
       >
         {
           columns.map(column => this.renderColumn(column.label, column.dataKey))
